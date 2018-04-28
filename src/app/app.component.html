@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-white">
+    Top 100 Cryptos | Bitcoin Price Chart
+  </h1>
+  <hr>
+  <h4 class="text-white" >MArket Cap: <span class=""> {{bitcoinMarketCap.total_market_cap_usd | currency}}></span> 24 h Vol: <span  class="">{{bitcoinMarketCap.total_24h_volume_usd | currency}}</span> | BTC Dominance {{bitcoinMarketCap.bitcoin_percentage_of_market_cap *0.01 | percent: '1.1-2'}}</h4>
+  <br>
+  <h5>Bigger Looser Last 24h: </h5>
+  <h5>Bigger Winner Last 24h: </h5>
+  <hr class= "bg-warning">
+ 
+  
+  <router-outlet></router-outlet>
+</div>
+

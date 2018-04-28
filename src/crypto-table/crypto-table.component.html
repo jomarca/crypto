@@ -1,0 +1,26 @@
+<table class="table table-light tabled-striped table-hover borderBlue">
+  <thead class ="borderBlue"> 
+    <tr>
+      <th class ="borderBlue clickpointer" (click)="sortNumeric(sortValues.rank, 'rank'); sortValues.rank = !sortValues.rank" >Number</th>
+      <th class ="borderBlue clickpointer" (click)="sortString(sortValues.name, 'name');sortValues.name = !sortValues.name">Name</th>
+      <th class ="borderBlue clickpointer" (click)="sortNumeric(sortValues.marketCap, 'market_cap_usd'); sortValues.marketCap = !sortValues.marketCap" >Market Cap in USD</th>
+      <th class ="borderBlue clickpointer" (click)="sortNumeric(sortValues.price, 'price_usd'); sortValues.price = !sortValues.price" >Price in USD</th>
+      <th class ="borderBlue clickpointer" (click)="sortNumeric(sortValues.volume, 'available_supply'); sortValues.volume = !sortValues.volume" >24h Volume</th>
+      <th class ="borderBlue clickpointer" (click)="sortNumeric(sortValues.change1, 'percent_change_1h'); sortValues.change1 = !sortValues.change1">Change last 1h</th>
+      <th class ="borderBlue clickpointer" (click)="sortNumeric(sortValues.change24, 'percent_change_24h'); sortValues.change24 = !sortValues.change24">Change last 24h</th>
+      <th class ="borderBlue clickpointer" (click)="sortNumeric(sortValues.change7, 'percent_change_7d'); sortValues.change7 = !sortValues.change7">Change last 7d</th>
+    </tr>
+  </thead>
+  <tbody   >
+    <tr *ngFor= "let crypto of top100Cryptos" class ="borderBlue" >
+      <td class ="borderBlue" [innerHTML]= "crypto.rank"></td>
+      <td class ="borderBlue" [innerHTML]= "crypto.name"></td>
+      <td class ="borderBlue" [innerHTML]= "crypto.market_cap_usd | currency"></td>
+      <td  class ="borderBlue" [innerHTML]= "crypto.price_usd | currency"></td>
+      <td class ="borderBlue" [innerHTML]= "crypto.available_supply"></td>
+      <td class ="borderBlue" [innerHTML]= "crypto.percent_change_1h * 0.01 | percent: '1.1-2'" [class.whenNegative]="crypto.percent_change_1h < 0"  [class.whenPositive]="crypto.percent_change_1h >= 0"></td>
+      <td class ="borderBlue" [innerHTML]= "crypto.percent_change_24h * 0.01 | percent: '1.1-2'" [class.whenNegative]="crypto.percent_change_24h < 0"  [class.whenPositive]="crypto.percent_change_24h >= 0"></td>
+      <td class ="borderBlue" [innerHTML]= "crypto.percent_change_7d * 0.01 | percent: '1.1-2'" [class.whenNegative]="crypto.percent_change_7d < 0"  [class.whenPositive]="crypto.percent_change_7d >= 0"></td>
+    </tr>
+  </tbody>
+</table>

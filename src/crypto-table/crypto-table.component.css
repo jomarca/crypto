@@ -1,0 +1,11 @@
+.whenPositive {
+  color: #008000;
+}
+
+.whenNegative {
+  color: #ff0101;
+}
+
+.clickpointer {
+  cursor: pointer;
+}
