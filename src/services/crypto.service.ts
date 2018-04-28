@@ -12,5 +12,9 @@ export class CryptoService{
   public getAllCryptos() {
     return this.http.get('https://api.coinmarketcap.com/v1/ticker/');
   }
+
+  public getBitCoinPriceStats() {
+    return this.http.get('https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=alltime&format=json')
+  }
 }
 
