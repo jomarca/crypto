@@ -19,7 +19,7 @@ const appRoutes: Routes = [
 ];
 
 
-const port = process.env.PORT || 5000;
+
 
 @NgModule({
   declarations: [
