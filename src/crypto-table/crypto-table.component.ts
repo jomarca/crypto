@@ -11,7 +11,9 @@ import {CryptoCurrency} from '../models/crypto-currency.class';
 export class CryptoTableComponent {
   public top100Cryptos: CryptoCurrency[];
   // to sort table headers
+  public filteredCryptos: CryptoCurrency[];
   public sortValues: any = {rank: false, marketCap: true, volume: false, change24: false, change1: false, change7:false, price:false, name: false}; //IF is false we are change to ascending, if is true we are changed to descending or we are goijng to reset that value
+  public priceUnit: string = 'USD';
 
   constructor(public cryptoService: CryptoService) {
     this.getTop100Cryptos();
@@ -23,8 +25,19 @@ export class CryptoTableComponent {
         this.top100Cryptos = data.map((element:any) => {
           return new CryptoCurrency(element);
         });
+        //create a copy of the array just for filtering purposes
+        this.filteredCryptos = this.top100Cryptos;
        
     });
+  }
+
+  public listenFilterCryptos(e: CryptoCurrency []) {
+    this.filteredCryptos = e;
+  }
+
+  public listenPriceUnit(e: string) {
+    this.priceUnit = e;
+    console.log(e);
   }
 
   public sortString(sortValue: boolean, key: string):void {
